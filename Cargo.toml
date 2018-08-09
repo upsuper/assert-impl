@@ -1,0 +1,12 @@
+[package]
+name = "assert-impl"
+version = "0.1.0"
+authors = ["Xidorn Quan <me@upsuper.org>"]
+description = "Macro for static assert types implement a trait or not"
+repository = "https://github.com/upsuper/assert-impl"
+license = "MIT"
+keywords = ["macro", "assert", "static", "impl"]
+readme = "README.md"
+
+[badges]
+travis-ci = { repository = "upsuper/assert-impl", branch = "master" }
