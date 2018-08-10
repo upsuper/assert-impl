@@ -22,7 +22,9 @@ impl StaticTyping for Rust {}
 This should build:
 ```rust
 assert_impl!(StaticTyping: C, Java, Rust);
+assert_impl!(StaticTyping: C, Java, Rust, );
 assert_impl!(!StaticTyping: JavaScript, Python);
+assert_impl!(!StaticTyping: JavaScript, Python, );
 ```
 
 But this should fail to build:

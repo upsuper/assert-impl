@@ -32,7 +32,9 @@
 //! # impl StaticTyping for Java {}
 //! # impl StaticTyping for Rust {}
 //! assert_impl!(StaticTyping: C, Java, Rust);
+//! assert_impl!(StaticTyping: C, Java, Rust, );
 //! assert_impl!(!StaticTyping: JavaScript, Python);
+//! assert_impl!(!StaticTyping: JavaScript, Python, );
 //! ```
 //!
 //! But these should fail to build:
@@ -84,4 +86,6 @@ macro_rules! assert_impl {
             Helper::<$ty>::assert();
          )+
     }};
+    ($trait:path: $($ty:ty,)+) => (assert_impl!($trait: $($ty),+));
+    (!$trait:path: $($ty:ty,)+) => (assert_impl!(!$trait: $($ty),+));
 }
