@@ -1,29 +1,32 @@
 Macro for static assert that types implement a trait or not.
 
+Note: this macro can only be used inside function body due to
+restriction of Rust.
+
 # Example
 
 Assuming you have the following definitions:
 ```rust
-struct Nadeshiko;
-struct Rin;
-struct Chiaki;
-struct Aoi;
-struct Ena;
+struct C;
+struct Java;
+struct JavaScript;
+struct Python;
+struct Rust;
 
-trait Yakuru {}
-impl Yakuru for Nadeshiko {}
-impl Yakuru for Chiaki {}
-impl Yakuru for Aoi {}
+trait StaticTyped {}
+impl StaticTyped for C {}
+impl StaticTyped for Java {}
+impl StaticTyped for Rust {}
 ```
 
 This should build:
 ```rust
-assert_impl!(Yakuru: Nadeshiko, Chiaki, Aoi);
-assert_impl!(!Yakuru: Rin, Ena);
+assert_impl!(StaticTyped: C, Java, Rust);
+assert_impl!(!StaticTyped: JavaScript, Python);
 ```
 
 But this should fail to build:
 ```rust
-assert_impl!(Yakuru: Rin);
-assert_impl!(!Yakuru: Nadeshiko);
+assert_impl!(StaticTyped: JavaScript);
+assert_impl!(!StaticTyped: Rust);
 ```

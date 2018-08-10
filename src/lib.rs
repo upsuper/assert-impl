@@ -4,61 +4,61 @@
 //!
 //! Assuming you have the following definitions:
 //! ```
-//! struct Nadeshiko;
-//! struct Rin;
-//! struct Chiaki;
-//! struct Aoi;
-//! struct Ena;
+//! struct C;
+//! struct Java;
+//! struct JavaScript;
+//! struct Python;
+//! struct Rust;
 //!
-//! trait Yakuru {}
-//! impl Yakuru for Nadeshiko {}
-//! impl Yakuru for Chiaki {}
-//! impl Yakuru for Aoi {}
+//! trait StaticTyped {}
+//! impl StaticTyped for C {}
+//! impl StaticTyped for Java {}
+//! impl StaticTyped for Rust {}
 //! ```
 //!
 //! This should build:
 //! ```
 //! # #[macro_use] extern crate assert_impl;
-//! # struct Nadeshiko;
-//! # struct Rin;
-//! # struct Chiaki;
-//! # struct Aoi;
-//! # struct Ena;
-//! # trait Yakuru {}
-//! # impl Yakuru for Nadeshiko {}
-//! # impl Yakuru for Chiaki {}
-//! # impl Yakuru for Aoi {}
-//! assert_impl!(Yakuru: Nadeshiko, Chiaki, Aoi);
-//! assert_impl!(!Yakuru: Rin, Ena);
+//! # struct C;
+//! # struct Java;
+//! # struct JavaScript;
+//! # struct Python;
+//! # struct Rust;
+//! # trait StaticTyped {}
+//! # impl StaticTyped for C {}
+//! # impl StaticTyped for Java {}
+//! # impl StaticTyped for Rust {}
+//! assert_impl!(StaticTyped: C, Java, Rust);
+//! assert_impl!(!StaticTyped: JavaScript, Python);
 //! ```
 //!
 //! But these should fail to build:
 //! ```compile_fail
 //! # #[macro_use] extern crate assert_impl;
-//! # struct Nadeshiko;
-//! # struct Rin;
-//! # struct Chiaki;
-//! # struct Aoi;
-//! # struct Ena;
-//! # trait Yakuru {}
-//! # impl Yakuru for Nadeshiko {}
-//! # impl Yakuru for Chiaki {}
-//! # impl Yakuru for Aoi {}
-//! assert_impl!(Yakuru: Rin);
+//! # struct C;
+//! # struct Java;
+//! # struct JavaScript;
+//! # struct Python;
+//! # struct Rust;
+//! # trait StaticTyped {}
+//! # impl StaticTyped for C {}
+//! # impl StaticTyped for Java {}
+//! # impl StaticTyped for Rust {}
+//! assert_impl!(StaticTyped: JavaScript);
 //! ```
 //!
 //! ```compile_fail
 //! # #[macro_use] extern crate assert_impl;
-//! # struct Nadeshiko;
-//! # struct Rin;
-//! # struct Chiaki;
-//! # struct Aoi;
-//! # struct Ena;
-//! # trait Yakuru {}
-//! # impl Yakuru for Nadeshiko {}
-//! # impl Yakuru for Chiaki {}
-//! # impl Yakuru for Aoi {}
-//! assert_impl!(!Yakuru: Nadeshiko);
+//! # struct C;
+//! # struct Java;
+//! # struct JavaScript;
+//! # struct Python;
+//! # struct Rust;
+//! # trait StaticTyped {}
+//! # impl StaticTyped for C {}
+//! # impl StaticTyped for Java {}
+//! # impl StaticTyped for Rust {}
+//! assert_impl!(!StaticTyped: Rust);
 //! ```
 
 #[macro_export]
