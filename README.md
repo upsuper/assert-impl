@@ -13,20 +13,20 @@ struct JavaScript;
 struct Python;
 struct Rust;
 
-trait StaticTyped {}
-impl StaticTyped for C {}
-impl StaticTyped for Java {}
-impl StaticTyped for Rust {}
+trait StaticTyping {}
+impl StaticTyping for C {}
+impl StaticTyping for Java {}
+impl StaticTyping for Rust {}
 ```
 
 This should build:
 ```rust
-assert_impl!(StaticTyped: C, Java, Rust);
-assert_impl!(!StaticTyped: JavaScript, Python);
+assert_impl!(StaticTyping: C, Java, Rust);
+assert_impl!(!StaticTyping: JavaScript, Python);
 ```
 
 But this should fail to build:
 ```rust
-assert_impl!(StaticTyped: JavaScript);
-assert_impl!(!StaticTyped: Rust);
+assert_impl!(StaticTyping: JavaScript);
+assert_impl!(!StaticTyping: Rust);
 ```

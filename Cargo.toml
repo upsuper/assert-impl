@@ -1,6 +1,6 @@
 [package]
 name = "assert-impl"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Xidorn Quan <me@upsuper.org>"]
 description = "Macro for static assert types implement a trait or not"
 repository = "https://github.com/upsuper/assert-impl"

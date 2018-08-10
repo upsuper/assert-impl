@@ -1,5 +1,8 @@
 //! Macro for static assert that types implement a trait or not.
 //!
+//! Note: this macro can only be used inside function body due to
+//! restriction of Rust.
+//!
 //! # Example
 //!
 //! Assuming you have the following definitions:
@@ -10,10 +13,10 @@
 //! struct Python;
 //! struct Rust;
 //!
-//! trait StaticTyped {}
-//! impl StaticTyped for C {}
-//! impl StaticTyped for Java {}
-//! impl StaticTyped for Rust {}
+//! trait StaticTyping {}
+//! impl StaticTyping for C {}
+//! impl StaticTyping for Java {}
+//! impl StaticTyping for Rust {}
 //! ```
 //!
 //! This should build:
@@ -24,12 +27,12 @@
 //! # struct JavaScript;
 //! # struct Python;
 //! # struct Rust;
-//! # trait StaticTyped {}
-//! # impl StaticTyped for C {}
-//! # impl StaticTyped for Java {}
-//! # impl StaticTyped for Rust {}
-//! assert_impl!(StaticTyped: C, Java, Rust);
-//! assert_impl!(!StaticTyped: JavaScript, Python);
+//! # trait StaticTyping {}
+//! # impl StaticTyping for C {}
+//! # impl StaticTyping for Java {}
+//! # impl StaticTyping for Rust {}
+//! assert_impl!(StaticTyping: C, Java, Rust);
+//! assert_impl!(!StaticTyping: JavaScript, Python);
 //! ```
 //!
 //! But these should fail to build:
@@ -40,11 +43,11 @@
 //! # struct JavaScript;
 //! # struct Python;
 //! # struct Rust;
-//! # trait StaticTyped {}
-//! # impl StaticTyped for C {}
-//! # impl StaticTyped for Java {}
-//! # impl StaticTyped for Rust {}
-//! assert_impl!(StaticTyped: JavaScript);
+//! # trait StaticTyping {}
+//! # impl StaticTyping for C {}
+//! # impl StaticTyping for Java {}
+//! # impl StaticTyping for Rust {}
+//! assert_impl!(StaticTyping: JavaScript);
 //! ```
 //!
 //! ```compile_fail
@@ -54,11 +57,11 @@
 //! # struct JavaScript;
 //! # struct Python;
 //! # struct Rust;
-//! # trait StaticTyped {}
-//! # impl StaticTyped for C {}
-//! # impl StaticTyped for Java {}
-//! # impl StaticTyped for Rust {}
-//! assert_impl!(!StaticTyped: Rust);
+//! # trait StaticTyping {}
+//! # impl StaticTyping for C {}
+//! # impl StaticTyping for Java {}
+//! # impl StaticTyping for Rust {}
+//! assert_impl!(!StaticTyping: Rust);
 //! ```
 
 #[macro_export]
