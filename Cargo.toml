@@ -10,3 +10,6 @@ readme = "README.md"
 
 [badges]
 travis-ci = { repository = "upsuper/assert-impl", branch = "master" }
+
+[dev-dependencies]
+compiletest_rs = { version = "0.3", features = ["stable"] }
